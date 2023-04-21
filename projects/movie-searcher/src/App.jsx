@@ -6,10 +6,17 @@ import result from './data/results.json'
 function App() {
   const movies = result.Search
 
+  const mappedMovies = movies.map(movie => ({
+    id: movie.imdbID,
+    title: movie.Title,
+    year: movie.Year,
+    img: movie.Poster,
+  }))
+
   return (
     <>
       <MovieForm />
-      <MovieList movies={movies} />
+      <MovieList movies={mappedMovies} />
     </>
   )
 }

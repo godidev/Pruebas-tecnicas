@@ -6,10 +6,10 @@ export function MovieList({ movies }) {
       {movies.map(movie => {
         return (
           <MovieDetail
-            key={movie.imdbID}
-            title={movie.Title}
-            year={movie.Year}
-            img={movie.Poster}
+            key={movie.id}
+            title={movie.title}
+            year={movie.year}
+            img={movie.img}
           />
         )
       })}
