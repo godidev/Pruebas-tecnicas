@@ -1,15 +1,27 @@
-import result from '../data/results.json'
-import noresult from '../data/no-results.json' //eslint-disable-line
-
 export function useMovies() {
-  const movies = result.Search
+  const API_KEY = '26a6ad46'
+  const BASE_URL = `http://www.omdbapi.com/?apikey=${API_KEY}`
 
-  const mappedMovies = movies?.map(movie => ({
-    id: movie.imdbID,
-    title: movie.Title,
-    year: movie.Year,
-    img: movie.Poster,
-  }))
+  const fetchMovies = search => {
+    const url = `${BASE_URL}&s=${search}`
 
-  return { movies: mappedMovies }
+    return fetch(url)
+      .then(response => response.json())
+      .then(data => {
+        return (
+          data.Search &&
+          data.Search.map(movie => {
+            return {
+              id: movie.imdbID,
+              title: movie.Title,
+              year: movie.Year,
+              img: movie.Poster,
+            }
+          })
+        )
+      })
+      .catch(error => console.error(error))
+  }
+
+  return fetchMovies
 }

@@ -4,6 +4,10 @@ export function useSearch() {
   const [search, setSearch] = useState('')
   const [error, setError] = useState(null)
 
+  const handleChange = event => {
+    setSearch(event.target.value)
+  }
+
   useEffect(() => {
     if (search === '') {
       setError("Can't search for an empty movie")
@@ -22,5 +26,5 @@ export function useSearch() {
     setError(null)
   }, [search])
 
-  return { search, setSearch, error }
+  return { search, setSearch, handleChange, error }
 }

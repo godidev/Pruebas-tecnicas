@@ -5,7 +5,7 @@ Crea una aplicación para buscar películas
 API a usar: - https://www.omdbapi.com/ Consigue la API Key en la propia página
 web registrando tu email.
 
-API KEY: **_26a6ad46_**
+API KEY: 26a6ad46
 
 Requerimientos:
 
@@ -13,11 +13,11 @@ Requerimientos:
 
 - [x] Lista las películas y muestra el título, año y poster.
 
-- [ ] Que el formulario funcione
+- [x] Que el formulario funcione
 
 - [x] Haz que las películas se muestren en un grid responsive.
 
-- [ ] Hacer el fetching de datos a la API
+- [x] Hacer el fetching de datos a la API
 
 Primera iteración:
 

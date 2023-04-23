@@ -1,10 +1,13 @@
 import { useSearch } from '../hooks/useSearch'
 
-export function MovieForm() {
-  const { search, setSearch, error } = useSearch()
+export function MovieForm({ onSearch }) {
+  const { search, handleChange, error } = useSearch()
+
   const handleSubmit = e => {
     e.preventDefault()
-    setSearch('')
+    if (!error) {
+      onSearch(search)
+    }
   }
 
   return (
@@ -19,9 +22,21 @@ export function MovieForm() {
           placeholder='Avengers, The matrix...'
           name='film'
           id='film'
-          onChange={e => setSearch(e.target.value)}
+          onChange={handleChange}
           value={search}
         />
+        {error && (
+          <p
+            style={{
+              color: 'red',
+              border: '1px solid red',
+              marginTop: '0px',
+              padding: '5px',
+            }}
+          >
+            {error}
+          </p>
+        )}
         <button>Search</button>
       </form>
     </div>
