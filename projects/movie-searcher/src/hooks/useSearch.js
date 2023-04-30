@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 
 export function useSearch() {
-  const [search, setSearch] = useState('')
+  const [search, setSearch] = useState()
   const [error, setError] = useState(null)
 
   const handleChange = event => {
@@ -9,11 +9,13 @@ export function useSearch() {
   }
 
   useEffect(() => {
+    if (!search) return
+
     if (search === '') {
       setError("Can't search for an empty movie")
       return
     }
-    if (search.match(/^\d+$/)) {
+    if (search.match(/^\d+.*/)) {
       setError('Movie cant start with a number')
       return
     }

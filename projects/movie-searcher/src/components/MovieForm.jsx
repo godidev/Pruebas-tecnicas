@@ -23,7 +23,7 @@ export function MovieForm({ onSearch }) {
           name='film'
           id='film'
           onChange={handleChange}
-          value={search}
+          value={search || ''}
         />
         {error && (
           <p
