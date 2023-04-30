@@ -1,12 +1,18 @@
+import { useState } from 'react'
 import { useSearch } from '../hooks/useSearch'
 
 export function MovieForm({ onSearch }) {
   const { search, handleChange, error } = useSearch()
+  const [previousSearch, setPreviousSearch] = useState()
 
   const handleSubmit = e => {
     e.preventDefault()
+
     if (!error) {
-      onSearch(search)
+      if (previousSearch !== search) {
+        onSearch(search)
+        setPreviousSearch(search)
+      }
     }
   }
 
